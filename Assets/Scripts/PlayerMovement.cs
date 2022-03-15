@@ -49,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);  
+      
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            myAnimator.SetBool("isClimbing", false);
+            // myAnimator.SetBool("isRunning", false);
+        }
     }  
 
     void FlipSprite()
@@ -68,5 +74,13 @@ public class PlayerMovement : MonoBehaviour
         
         Vector2 climbVelocity = new Vector2(myRigidbody.velocity.x, moveInput.y * climbSpeed);
         myRigidbody.velocity = climbVelocity;
+
+        myAnimator.SetBool("isClimbing", true);
+
+        // if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        // {
+        //     myAnimator.SetBool("isRunning", true);
+        //     myAnimator.SetBool("isClimbing", true);
+        // }
     }
 }
