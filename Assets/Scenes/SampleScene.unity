@@ -784,7 +784,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.231884, y: 1}
+    m_SensorSize: {x: 0.58514494, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9261,7 +9261,6 @@ GameObject:
   - component: {fileID: 2137435865}
   - component: {fileID: 2137435867}
   - component: {fileID: 2137435866}
-  - component: {fileID: 2137435868}
   m_Layer: 9
   m_Name: Background Tilemap
   m_TagString: Untagged
@@ -31683,36 +31682,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!60 &2137435868
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137435864}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 15.5, y: 38.5}
-      - {x: -15.409338, y: 16.043053}
-      - {x: -3.6030178, y: -20.293055}
-      - {x: 34.603024, y: -20.29305}
-      - {x: 46.409336, y: 16.043056}
 --- !u!1001 &3741686810997115577
 PrefabInstance:
   m_ObjectHideFlags: 0
