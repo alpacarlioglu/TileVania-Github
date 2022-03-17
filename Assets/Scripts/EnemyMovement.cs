@@ -18,11 +18,11 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        myRigidbody.velocity = new Vector2 (moveSpeed, 0f);
+        myRigidbody.velocity = new Vector2(moveSpeed, 0f);
 
         if (GameObject.Find("Player").GetComponent<PlayerMovement>().isAlive == false)
         {
-            myCapsuleCollider.enabled = false;            
+            myCapsuleCollider.enabled = false;
         }
     }
 
@@ -35,6 +35,5 @@ public class EnemyMovement : MonoBehaviour
     void FlipEnemyFacing()
     {
         transform.localScale = new Vector2 (-(Mathf.Sign(myRigidbody.velocity.x)), 1f);
-        
     }
 }

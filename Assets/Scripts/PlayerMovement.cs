@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2 (10f, 10f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] int score = 0;
 
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
@@ -20,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     float gravityScaleAtStart;
     public bool isAlive = true;
     CapsuleCollider2D myCapsulCollider;
+    float levelLoadDelay = 1f;
     
 
 
@@ -32,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         myCapsulCollider = GetComponent<CapsuleCollider2D>();
         gravityScaleAtStart = myRigidbody.gravityScale;
         
-    
+        scoreText.text = score.ToString(); 
     }
 
     void Update()
@@ -42,6 +48,13 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         Die();
+
+        scoreText.text = score.ToString(); 
+
+        if (!isAlive)
+        {
+            StartCoroutine(LoadNextLevel());
+        }
     }
 
     void OnFire(InputValue value)
@@ -120,4 +133,19 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Coin")
+        {
+            score += 10;
+        }
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSecondsRealtime(levelLoadDelay);
+        SceneManager.LoadScene(0);
+    }
+
 }
